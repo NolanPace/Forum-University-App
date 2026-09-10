@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 
-class PorticoLogo extends StatelessWidget {
+class ForumLogo extends StatelessWidget {
   final double size;
   final bool showWordmark;
 
-  const PorticoLogo({
+  const ForumLogo({
     super.key,
     this.size = 58,
     this.showWordmark = true,
@@ -40,7 +40,7 @@ class PorticoLogo extends StatelessWidget {
         mark,
         const SizedBox(width: 12),
         const Text(
-          'Portico',
+          'Forum',
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.w800,

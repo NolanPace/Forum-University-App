@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../app/config/app_config.dart';
-import '../../shared/widgets/portico_logo.dart';
+import '../../shared/widgets/forum_logo.dart';
 import 'create_account_screen.dart';
 import 'login_screen.dart';
 
@@ -19,7 +19,7 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             children: [
               const Spacer(),
-              const PorticoLogo(size: 82),
+              const ForumLogo(size: 82),
               const SizedBox(height: 24),
               const Text(
                 AppConfig.tagline,
