@@ -1,6 +1,2 @@
 # Forum
-
-A new Flutter project.
-
-
-samples, guidance on mobile development, and a full API reference.
+Don't bother looking at this, haven't even considered writing one yet
