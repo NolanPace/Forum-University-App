@@ -1,9 +1,14 @@
-// FILE: lib/main.dart
-
 import 'package:flutter/material.dart';
+
+import 'app.dart';
 import 'bootstrap.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(bootstrap());
+
+  await bootstrap();
+
+  runApp(
+    const ForumApp(),
+  );
 }

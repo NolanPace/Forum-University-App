@@ -67,7 +67,7 @@ class _CreateAccountScreenState
         padding: const EdgeInsets.all(24),
         children: [
           const Text(
-            'Create your Portico account',
+            'Create your Forum account',
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w800,
