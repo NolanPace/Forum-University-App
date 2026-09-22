@@ -46,7 +46,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  user.personalEmail,
+                  user.email,
                 ),
               ),
               const SizedBox(height: 26),

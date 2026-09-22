@@ -16,8 +16,7 @@ class ForumCalendarScreen
     return AnimatedBuilder(
       animation: AuthSession.instance,
       builder: (context, _) {
-        final educator =
-            AuthSession.instance.isEducator;
+        const educator = false;
 
         return SafeArea(
           child: ListView(

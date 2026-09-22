@@ -1,6 +1,8 @@
 // FILE: lib/bootstrap.dart
+// Initializes services required before Forum starts.
 
-import 'package:flutter/widgets.dart';
-import 'app.dart';
+import 'core/auth/auth_session.dart';
 
-Widget bootstrap() => const PorticoApp();
+Future<void> bootstrap() async {
+  await AuthSession.instance.initialize();
+}

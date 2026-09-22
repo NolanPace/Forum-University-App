@@ -45,9 +45,6 @@ class InstitutionSwitcher
                           title: Text(
                             institution.name,
                           ),
-                          subtitle: Text(
-                            institution.location,
-                          ),
                           trailing:
                               institution.id ==
                                       active?.id

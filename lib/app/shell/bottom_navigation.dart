@@ -1,58 +1,70 @@
 // FILE: lib/app/shell/bottom_navigation.dart
+// Permanent bottom navigation for Forum.
 
 import 'package:flutter/material.dart';
 
-class ForumNavigationBar
-    extends StatelessWidget {
-  final int selectedIndex;
-  final ValueChanged<int>
-      onDestinationSelected;
+import '../theme/app_icons.dart';
 
-  const ForumNavigationBar({
+class ForumBottomNavigation extends StatelessWidget {
+  const ForumBottomNavigation({
     super.key,
-    required this.selectedIndex,
+    required this.currentIndex,
     required this.onDestinationSelected,
   });
+
+  final int currentIndex;
+  final ValueChanged<int> onDestinationSelected;
 
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
-      selectedIndex: selectedIndex,
+      selectedIndex: currentIndex,
       onDestinationSelected:
           onDestinationSelected,
-      destinations: const [
+      destinations: const <NavigationDestination>[
         NavigationDestination(
-          icon: Icon(Icons.home_outlined),
-          selectedIcon: Icon(Icons.home),
+          icon: Icon(
+            ForumIcons.home,
+          ),
+          selectedIcon: Icon(
+            ForumIcons.home,
+          ),
           label: 'Home',
         ),
         NavigationDestination(
-          icon:
-              Icon(Icons.menu_book_outlined),
-          selectedIcon:
-              Icon(Icons.menu_book),
+          icon: Icon(
+            ForumIcons.courses,
+          ),
+          selectedIcon: Icon(
+            ForumIcons.courses,
+          ),
           label: 'Courses',
         ),
         NavigationDestination(
           icon: Icon(
-            Icons.calendar_month_outlined,
+            ForumIcons.calendar,
           ),
-          selectedIcon:
-              Icon(Icons.calendar_month),
+          selectedIcon: Icon(
+            ForumIcons.calendar,
+          ),
           label: 'Calendar',
         ),
         NavigationDestination(
-          icon:
-              Icon(Icons.chat_bubble_outline),
-          selectedIcon:
-              Icon(Icons.chat_bubble),
+          icon: Icon(
+            ForumIcons.messages,
+          ),
+          selectedIcon: Icon(
+            ForumIcons.messages,
+          ),
           label: 'Messages',
         ),
         NavigationDestination(
-          icon:
-              Icon(Icons.person_outline),
-          selectedIcon:
-              Icon(Icons.person),
+          icon: Icon(
+            ForumIcons.profile,
+          ),
+          selectedIcon: Icon(
+            ForumIcons.profile,
+          ),
           label: 'Me',
         ),
       ],

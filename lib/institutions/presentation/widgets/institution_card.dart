@@ -20,7 +20,6 @@ class InstitutionCard
       child: ListTile(
         onTap: onTap,
         title: Text(institution.name),
-        subtitle: Text(institution.location),
         trailing:
             const Icon(Icons.chevron_right),
       ),

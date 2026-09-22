@@ -59,7 +59,6 @@ class StudentHomeScreen
           ),
           const SizedBox(height: 22),
           const DashboardCard(
-            label: 'Next Class',
             title: 'CS 301 • Algorithms',
             subtitle:
                 '10:00 AM • Bannow 254',
@@ -88,8 +87,8 @@ class StudentHomeScreen
             ),
             itemBuilder: (context, index) {
               return ModuleTile(
-                module: ModuleRegistry
-                    .studentModules[index],
+                title: 'Module',
+                icon: Icons.apps,
               );
             },
           ),

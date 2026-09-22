@@ -30,26 +30,22 @@ class _AddInstitutionScreenState
       id: 'fairfield',
       name: 'Fairfield University',
       shortName: 'Fairfield',
-      location: 'Fairfield, Connecticut',
     ),
     Institution(
       id: 'yale',
       name: 'Yale University',
       shortName: 'Yale',
-      location: 'New Haven, Connecticut',
     ),
     Institution(
       id: 'edinburgh',
       name: 'University of Edinburgh',
       shortName: 'Edinburgh',
-      location: 'Edinburgh, Scotland',
     ),
     Institution(
       id: 'mit',
       name:
           'Massachusetts Institute of Technology',
       shortName: 'MIT',
-      location: 'Cambridge, Massachusetts',
     ),
   ];
 
@@ -81,9 +77,6 @@ class _AddInstitutionScreenState
     final results = institutions.where(
       (institution) {
         return institution.name
-                .toLowerCase()
-                .contains(query) ||
-            institution.location
                 .toLowerCase()
                 .contains(query);
       },
@@ -124,8 +117,6 @@ class _AddInstitutionScreenState
                   ),
                 ),
                 title: Text(institution.name),
-                subtitle:
-                    Text(institution.location),
                 trailing:
                     const Icon(Icons.chevron_right),
                 onTap: () =>

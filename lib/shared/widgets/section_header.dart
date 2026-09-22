@@ -1,31 +1,68 @@
 // FILE: lib/shared/widgets/section_header.dart
+// Standard heading used above sections throughout Forum.
 
 import 'package:flutter/material.dart';
 
-class SectionHeader extends StatelessWidget {
-  final String title;
-  final Widget? trailing;
+import '../../app/theme/app_colors.dart';
 
-  const SectionHeader(
-    this.title, {
+class SectionHeader extends StatelessWidget {
+  const SectionHeader({
     super.key,
-    this.trailing,
+    required this.title,
+    this.subtitle,
+    this.actionLabel,
+    this.onAction,
   });
+
+  final String title;
+  final String? subtitle;
+  final String? actionLabel;
+  final VoidCallback? onAction;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      crossAxisAlignment:
+          CrossAxisAlignment.end,
+      children: <Widget>[
         Expanded(
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w800,
-            ),
+          child: Column(
+            crossAxisAlignment:
+                CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                title,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge,
+              ),
+              if (subtitle != null &&
+                  subtitle!.isNotEmpty) ...<Widget>[
+                const SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  subtitle!,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall,
+                ),
+              ],
+            ],
           ),
         ),
-        if (trailing != null) trailing!,
+        if (actionLabel != null &&
+            onAction != null)
+          TextButton(
+            onPressed: onAction,
+            child: Text(
+              actionLabel!,
+              style: const TextStyle(
+                color: AppColors.primary,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
       ],
     );
   }

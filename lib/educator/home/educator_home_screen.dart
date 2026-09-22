@@ -7,7 +7,6 @@ import '../../features/assistant/presentation/command_bar.dart';
 import '../../institutions/modules/module_registry.dart';
 import '../../institutions/presentation/institution_switcher.dart';
 import '../../shared/widgets/dashboard_card.dart';
-import '../../shared/widgets/module_tile.dart';
 
 class EducatorHomeScreen
     extends StatelessWidget {
@@ -59,7 +58,6 @@ class EducatorHomeScreen
           ),
           const SizedBox(height: 22),
           const DashboardCard(
-            label: 'Next Class',
             title: 'CS 301 • Algorithms',
             subtitle:
                 '10:00 AM • 24 Students',
@@ -88,9 +86,10 @@ class EducatorHomeScreen
               mainAxisSpacing: 12,
             ),
             itemBuilder: (context, index) {
-              return ModuleTile(
-                module: ModuleRegistry
-                    .educatorModules[index],
+              return const Card(
+                child: Center(
+                  child: Icon(Icons.apps),
+                ),
               );
             },
           ),

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../../core/auth/auth_session.dart';
 import '../../institutions/presentation/add_institution_screen.dart';
 import 'bottom_navigation.dart';
-import 'educator_shell.dart';
 import 'student_shell.dart';
 
 class AppShell extends StatelessWidget {
@@ -42,9 +41,7 @@ class AppShell extends StatelessWidget {
           );
         }
 
-        final pages = session.isStudent
-            ? StudentShellPages.pages
-            : EducatorShellPages.pages;
+        final pages = StudentShellPages.pages;
 
         return Scaffold(
           body: IndexedStack(
@@ -53,11 +50,33 @@ class AppShell extends StatelessWidget {
             children: pages,
           ),
           bottomNavigationBar:
-              ForumNavigationBar(
+              NavigationBar(
             selectedIndex:
                 session.navigationIndex,
             onDestinationSelected:
                 session.setNavigationIndex,
+            destinations: const [
+              NavigationDestination(
+                icon: Icon(Icons.home_outlined),
+                selectedIcon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.forum_outlined),
+                selectedIcon: Icon(Icons.forum),
+                label: 'Forums',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.notifications_none),
+                selectedIcon: Icon(Icons.notifications),
+                label: 'Notifications',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.person_outline),
+                selectedIcon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
           ),
         );
       },

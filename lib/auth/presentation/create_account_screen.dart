@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../../core/auth/auth_session.dart';
 import '../../identity/models/account_type.dart';
 import '../../institutions/presentation/add_institution_screen.dart';
 
@@ -40,12 +39,6 @@ class _CreateAccountScreenState
         emailController.text.trim().isEmpty) {
       return;
     }
-
-    AuthSession.instance.createAccount(
-      name: nameController.text.trim(),
-      email: emailController.text.trim(),
-      accountType: selected!,
-    );
 
     Navigator.pushAndRemoveUntil(
       context,

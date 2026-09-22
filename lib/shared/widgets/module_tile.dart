@@ -1,60 +1,95 @@
 // FILE: lib/shared/widgets/module_tile.dart
+// Standard Forum module shortcut.
 
 import 'package:flutter/material.dart';
 
-import '../../features/shared/module_router.dart';
-import '../../institutions/modules/university_module.dart';
+import '../../app/theme/app_colors.dart';
+import '../../app/theme/app_icons.dart';
+import '../../app/theme/app_shapes.dart';
+import 'forum_card.dart';
 
 class ModuleTile extends StatelessWidget {
-  final UniversityModule module;
-
   const ModuleTile({
     super.key,
-    required this.module,
+    required this.title,
+    required this.icon,
+    this.subtitle,
+    this.onTap,
   });
+
+  final String title;
+  final String? subtitle;
+  final IconData icon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(20),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) =>
-                ModuleRouter.screenFor(
-              module.id,
+    return ForumCard(
+      onTap: onTap,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 14,
+        vertical: 14,
+      ),
+      child: Row(
+        children: <Widget>[
+          Container(
+            width: 42,
+            height: 42,
+            decoration: const BoxDecoration(
+              color: AppColors.primaryLight,
+              borderRadius: AppShapes.medium,
+            ),
+            alignment: Alignment.center,
+            child: Icon(
+              icon,
+              size: 21,
+              color: AppColors.primary,
             ),
           ),
-        );
-      },
-      child: Container(
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Column(
-          mainAxisAlignment:
-              MainAxisAlignment.center,
-          children: [
-            Icon(
-              module.icon,
-              size: 30,
-              color: Theme.of(context)
-                  .colorScheme
-                  .primary,
+          const SizedBox(
+            width: 12,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  title,
+                  maxLines: 1,
+                  overflow:
+                      TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall,
+                ),
+                if (subtitle != null &&
+                    subtitle!.isNotEmpty) ...<Widget>[
+                  const SizedBox(
+                    height: 2,
+                  ),
+                  Text(
+                    subtitle!,
+                    maxLines: 1,
+                    overflow:
+                        TextOverflow.ellipsis,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall,
+                  ),
+                ],
+              ],
             ),
-            const SizedBox(height: 10),
-            Text(
-              module.title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          const Icon(
+            ForumIcons.chevronRight,
+            size: 18,
+            color: AppColors.textTertiary,
+          ),
+        ],
       ),
     );
   }
