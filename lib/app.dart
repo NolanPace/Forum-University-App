@@ -7,6 +7,7 @@ import 'app/shell/app_shell.dart';
 import 'app/theme/app_theme.dart';
 import 'auth/presentation/welcome_screen.dart';
 import 'core/auth/auth_session.dart';
+import 'institutions/presentation/add_institution_screen.dart';
 
 class ForumApp extends StatelessWidget {
   const ForumApp({
@@ -21,8 +22,24 @@ class ForumApp extends StatelessWidget {
         BuildContext context,
         Widget? child,
       ) {
-        final AuthSession session =
-            AuthSession.instance;
+        final AuthSession session = AuthSession.instance;
+
+        Widget home;
+
+        // No active Forum session
+        if (!session.isSignedIn || session.user == null) {
+          home = const WelcomeScreen();
+        }
+
+        // Signed in, but no university has been connected yet
+        else if (session.activeInstitution == null) {
+          home = const AddInstitutionScreen();
+        }
+
+        // Signed in and institution is available
+        else {
+          home = const AppShell();
+        }
 
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -30,10 +47,7 @@ class ForumApp extends StatelessWidget {
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: ThemeMode.light,
-          home: session.isSignedIn &&
-                  session.user != null
-              ? const AppShell()
-              : const WelcomeScreen(),
+          home: home,
         );
       },
     );
