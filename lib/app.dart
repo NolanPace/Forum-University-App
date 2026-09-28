@@ -26,17 +26,17 @@ class ForumApp extends StatelessWidget {
 
         Widget home;
 
-        // No active Forum session
+        // User is not signed in, or there is no saved Forum account.
         if (!session.isSignedIn || session.user == null) {
           home = const WelcomeScreen();
         }
 
-        // Signed in, but no university has been connected yet
+        // User is signed in, but has not connected a university yet.
         else if (session.activeInstitution == null) {
           home = const AddInstitutionScreen();
         }
 
-        // Signed in and institution is available
+        // User is signed in and has an active university.
         else {
           home = const AppShell();
         }
@@ -44,9 +44,16 @@ class ForumApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Forum',
+
+          // Forum themes
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
+
+          // Keep Forum in light mode for now.
+          // We can make this user-selectable later.
           themeMode: ThemeMode.light,
+
+          // Initial screen
           home: home,
         );
       },
